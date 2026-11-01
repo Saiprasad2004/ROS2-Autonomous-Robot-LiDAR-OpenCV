@@ -1,0 +1,407 @@
+<?xml version="1.0" ?>
+<sdf version="1.9">
+  <world name="room">
+
+    <physics name="default_physics" type="ode">
+      <max_step_size>0.001</max_step_size>
+      <real_time_factor>1</real_time_factor>
+      <real_time_update_rate>1000</real_time_update_rate>
+    </physics>
+
+    <plugin
+      filename="gz-sim-physics-system"
+      name="gz::sim::systems::Physics"/>
+
+    <plugin
+      filename="gz-sim-user-commands-system"
+      name="gz::sim::systems::UserCommands"/>
+
+    <plugin
+      filename="gz-sim-scene-broadcaster-system"
+      name="gz::sim::systems::SceneBroadcaster"/>
+    
+    <plugin
+      filename="gz-sim-sensors-system"
+      name="gz::sim::systems::Sensors">
+      <render_engine>ogre2</render_engine>
+    </plugin>
+
+
+    <!-- Ground -->
+
+    <model name="ground">
+      <static>true</static>
+
+      <link name="link">
+
+        <collision name="collision">
+          <geometry>
+            <plane>
+              <normal>0 0 1</normal>
+              <size>20 20</size>
+            </plane>
+          </geometry>
+        </collision>
+
+        <visual name="visual">
+          <geometry>
+            <plane>
+              <normal>0 0 1</normal>
+              <size>20 20</size>
+            </plane>
+          </geometry>
+
+          <material>
+            <ambient>0.5 0.5 0.5 1</ambient>
+            <diffuse>0.5 0.5 0.5 1</diffuse>
+          </material>
+        </visual>
+
+      </link>
+    </model>
+
+
+    <!-- Back wall -->
+
+    <model name="back_wall">
+      <static>true</static>
+      <pose>0 5 0.5 0 0 0</pose>
+
+      <link name="link">
+
+        <collision name="collision">
+          <geometry>
+            <box>
+              <size>10 0.1 1</size>
+            </box>
+          </geometry>
+        </collision>
+
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>10 0.1 1</size>
+            </box>
+          </geometry>
+
+          <material>
+            <ambient>0.2 0.5 0.9 1</ambient>
+            <diffuse>0.2 0.5 0.9 1</diffuse>
+          </material>
+        </visual>
+
+      </link>
+    </model>
+
+
+    <!-- Front wall -->
+
+    <model name="front_wall">
+      <static>true</static>
+      <pose>0 -5 0.5 0 0 0</pose>
+
+      <link name="link">
+
+        <collision name="collision">
+          <geometry>
+            <box>
+              <size>10 0.1 1</size>
+            </box>
+          </geometry>
+        </collision>
+
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>10 0.1 1</size>
+            </box>
+          </geometry>
+
+          <material>
+            <ambient>0.2 0.5 0.9 1</ambient>
+            <diffuse>0.2 0.5 0.9 1</diffuse>
+          </material>
+        </visual>
+
+      </link>
+    </model>
+
+
+    <!-- Left wall -->
+
+    <model name="left_wall">
+      <static>true</static>
+      <pose>-5 0 0.5 0 0 0</pose>
+
+      <link name="link">
+
+        <collision name="collision">
+          <geometry>
+            <box>
+              <size>0.1 10 1</size>
+            </box>
+          </geometry>
+        </collision>
+
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>0.1 10 1</size>
+            </box>
+          </geometry>
+
+          <material>
+            <ambient>0.2 0.5 0.9 1</ambient>
+            <diffuse>0.2 0.5 0.9 1</diffuse>
+          </material>
+        </visual>
+
+      </link>
+    </model>
+
+
+    <!-- Right wall -->
+
+    <model name="right_wall">
+      <static>true</static>
+      <pose>5 0 0.5 0 0 0</pose>
+
+      <link name="link">
+
+        <collision name="collision">
+          <geometry>
+            <box>
+              <size>0.1 10 1</size>
+            </box>
+          </geometry>
+        </collision>
+
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>0.1 10 1</size>
+            </box>
+          </geometry>
+
+          <material>
+            <ambient>0.2 0.5 0.9 1</ambient>
+            <diffuse>0.2 0.5 0.9 1</diffuse>
+          </material>
+        </visual>
+
+      </link>
+    </model>
+
+
+
+
+    <model name="landmark_1">
+      <static>true</static>
+      <pose>-2.5 1.5 0.4 0 0 0</pose>
+      <link name="link">
+        <collision name="collision">
+          <geometry><box><size>0.8 0.8 0.8</size></box></geometry>
+        </collision>
+        <visual name="visual">
+          <geometry><box><size>0.8 0.8 0.8</size></box></geometry>
+        </visual>
+      </link>
+    </model>
+
+    <model name="landmark_2">
+      <static>true</static>
+      <pose>1.8 2.8 0.5 0 0 0</pose>
+      <link name="link">
+        <collision name="collision">
+          <geometry><box><size>1.0 0.6 1.0</size></box></geometry>
+        </collision>
+        <visual name="visual">
+          <geometry><box><size>1.0 0.6 1.0</size></box></geometry>
+        </visual>
+      </link>
+    </model>
+
+    <model name="landmark_3">
+      <static>true</static>
+      <pose>2.7 -1.8 0.4 0 0 0</pose>
+      <link name="link">
+        <collision name="collision">
+          <geometry><box><size>0.6 1.4 0.8</size></box></geometry>
+        </collision>
+        <visual name="visual">
+          <geometry><box><size>0.6 1.4 0.8</size></box></geometry>
+        </visual>
+      </link>
+    </model>
+
+    <model name="landmark_4">
+      <static>true</static>
+      <pose>-2.5 -2.5 0.4 0 0 0</pose>
+      <link name="link">
+        <collision name="collision">
+          <geometry><box><size>1.2 0.5 0.8</size></box></geometry>
+        </collision>
+        <visual name="visual">
+          <geometry><box><size>1.2 0.5 0.8</size></box></geometry>
+        </visual>
+      </link>
+    </model>
+
+        <!-- WALL-CONNECTED OBSTACLE 1: LEFT WALL -->
+    <model name="maze_wall_left">
+      <static>true</static>
+      <pose>-4.2 2.8 0.4 0 0 0</pose>
+      <link name="link">
+        <collision name="collision">
+          <geometry>
+            <box>
+              <size>1.6 1.2 0.8</size>
+            </box>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>1.6 1.2 0.8</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.05 0.05 0.05 1</ambient>
+            <diffuse>0.05 0.05 0.05 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <!-- WALL-CONNECTED OBSTACLE 2: RIGHT WALL -->
+    <model name="maze_wall_right">
+      <static>true</static>
+      <pose>4.2 0.5 0.4 0 0 0</pose>
+      <link name="link">
+        <collision name="collision">
+          <geometry>
+            <box>
+              <size>1.6 1.2 0.8</size>
+            </box>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>1.6 1.2 0.8</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.05 0.05 0.05 1</ambient>
+            <diffuse>0.05 0.05 0.05 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <!-- WALL-CONNECTED OBSTACLE 3: BACK WALL -->
+    <model name="maze_wall_back">
+      <static>true</static>
+      <pose>-1.5 4.2 0.4 0 0 0</pose>
+      <link name="link">
+        <collision name="collision">
+          <geometry>
+            <box>
+              <size>1.5 1.6 0.8</size>
+            </box>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>1.5 1.6 0.8</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.05 0.05 0.05 1</ambient>
+            <diffuse>0.05 0.05 0.05 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <!-- WALL-CONNECTED OBSTACLE 4: FRONT WALL -->
+    <model name="maze_wall_front">
+      <static>true</static>
+      <pose>1.5 -4.2 0.4 0 0 0</pose>
+      <link name="link">
+        <collision name="collision">
+          <geometry>
+            <box>
+              <size>1.5 1.6 0.8</size>
+            </box>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>1.5 1.6 0.8</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.05 0.05 0.05 1</ambient>
+            <diffuse>0.05 0.05 0.05 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <!-- CENTRAL OBSTACLE 1 -->
+    <model name="maze_center_1">
+      <static>true</static>
+      <pose>0.0 1.0 0.4 0 0 0</pose>
+      <link name="link">
+        <collision name="collision">
+          <geometry>
+            <box>
+              <size>1.0 0.8 0.8</size>
+            </box>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>1.0 0.8 0.8</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.05 0.05 0.05 1</ambient>
+            <diffuse>0.05 0.05 0.05 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <!-- CENTRAL OBSTACLE 2 -->
+    <model name="maze_center_2">
+      <static>true</static>
+      <pose>0.0 -1.8 0.4 0 0 0</pose>
+      <link name="link">
+        <collision name="collision">
+          <geometry>
+            <box>
+              <size>0.8 1.2 0.8</size>
+            </box>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>0.8 1.2 0.8</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.05 0.05 0.05 1</ambient>
+            <diffuse>0.05 0.05 0.05 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+  </world>
+</sdf>
